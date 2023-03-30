@@ -108,18 +108,20 @@ def get_all_orders_from_miniApp():
             if order.attributes.get('landing_site') == search_string:
                 print(order.id)
                 saf_orders.append(order)
+                
+            if order.attributes.get('landing_site') == '/?tid=iOhuQl1ykP':
+                print(order.id)
+                saf_orders.append(order)
 
-        # Latest order
-        # print(orders)
         if len(orders) == 0:
             break
-        
         # print(orders)
+        
+        # Latest order
         latest = orders[0]
-        # print('')
-        # print(latest)
         date_string = latest.attributes.get('created_at')
         print('last_order create_at: ', date_string)
+        
         date_format = "%Y-%m-%dT%H:%M:%S%z"
         CREATED_AT_MIN = datetime.strptime(date_string, date_format)
 
@@ -127,7 +129,6 @@ def get_all_orders_from_miniApp():
             fact = 'I LOVE CODING'
 
     print(saf_orders)
-    
     print(len(saf_orders))
 
 get_all_orders_from_miniApp()
